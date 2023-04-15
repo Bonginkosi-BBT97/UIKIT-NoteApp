@@ -5,7 +5,7 @@ class EditNoteViewController: UIViewController {
     static let identifier = "EditNoteViewController"
     
     var note: Note!
-    weak var delegate: ListNotesDelegate?
+
 
     @IBOutlet weak private var textView: UITextView!
     
@@ -26,16 +26,14 @@ class EditNoteViewController: UIViewController {
     // MARK:- Methods to implement
     private func updateNote() {
   
-        
+
         note.lastUpdated = Date()
         CoreDataManager.shared.save()
-        delegate?.refreshNotes()
+
     }
     
     private func deleteNote() {
         // TODO delete the note from database
-        
-        delegate?.deleteNote(with: note.id)
         CoreDataManager.shared.deleteNote(note)
         
     }
