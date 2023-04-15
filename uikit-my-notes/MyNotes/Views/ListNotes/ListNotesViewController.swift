@@ -76,8 +76,10 @@ class ListNotesViewController: UIViewController {
     
     private func searchNotesFromStorage(_ text: String) {
         // TODO Get all notes that have this text
-        print("Searching notes")
-    }
+        allNotes = CoreDataManager.shared.fetchNotes(filter: text)
+        
+        tableView.reloadData()
+            }
 }
 
 // MARK: TableView Configuration
